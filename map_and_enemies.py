@@ -4,190 +4,78 @@ from enemy import Enemy
 from pygame.sprite import Sprite
 
 
-class Wall1(Sprite):
-    def __init__(self, screen, centerx, centery):
+class Wall(Sprite):
+    def __init__(self, screen, pos, picture):
         super().__init__()
         self.screen = screen
         self.screen_rect = screen.get_rect()
-        self.wall = pygame.image.load('images/wall1.png').convert_alpha()
+        self.wall = pygame.image.load(picture).convert_alpha()
         self.rect = self.wall.get_rect()
-        self.rect.centerx = centerx
-        self.rect.centery = centery
-
-    def update(self):
-        self.screen.blit(self.wall, self.rect)
-
-
-class Wall2(Sprite):
-    def __init__(self, screen, centerx, centery):
-        super().__init__()
-        self.screen = screen
-        self.screen_rect = screen.get_rect()
-        self.wall = pygame.image.load('images/wall2.png').convert_alpha()
-        self.rect = self.wall.get_rect()
-        self.rect.centerx = centerx
-        self.rect.centery = centery
-
-    def update(self):
-        self.screen.blit(self.wall, self.rect)
-
-
-class Wall3(Sprite):
-    def __init__(self, screen, centerx, centery):
-        super().__init__()
-        self.screen = screen
-        self.screen_rect = screen.get_rect()
-        self.wall = pygame.image.load('images/wall3.png').convert_alpha()
-        self.rect = self.wall.get_rect()
-        self.rect.centerx = centerx
-        self.rect.centery = centery
-
-    def update(self):
-        self.screen.blit(self.wall, self.rect)
-
-
-class Wall4(Sprite):
-    def __init__(self, screen, centerx, centery):
-        super().__init__()
-        self.screen = screen
-        self.screen_rect = screen.get_rect()
-        self.wall = pygame.image.load('images/wall4.png').convert_alpha()
-        self.rect = self.wall.get_rect()
-        self.rect.centerx = centerx
-        self.rect.centery = centery
-
-    def update(self):
-        self.screen.blit(self.wall, self.rect)
-
-
-class Wall5(Sprite):
-    def __init__(self, screen, centerx, centery):
-        super().__init__()
-        self.screen = screen
-        self.screen_rect = screen.get_rect()
-        self.wall = pygame.image.load('images/wall5.png').convert_alpha()
-        self.rect = self.wall.get_rect()
-        self.rect.centerx = centerx
-        self.rect.centery = centery
-
-    def update(self):
-        self.screen.blit(self.wall, self.rect)
-
-
-class Wall6(Sprite):
-    def __init__(self, screen, centerx, centery):
-        super().__init__()
-        self.screen = screen
-        self.screen_rect = screen.get_rect()
-        self.wall = pygame.image.load('images/wall6.png').convert_alpha()
-        self.rect = self.wall.get_rect()
-        self.rect.centerx = centerx
-        self.rect.centery = centery
-
-    def update(self):
-        self.screen.blit(self.wall, self.rect)
-
-
-class Wall7(Sprite):
-    def __init__(self, screen, centerx, centery):
-        super().__init__()
-        self.screen = screen
-        self.screen_rect = screen.get_rect()
-        self.wall = pygame.image.load('images/wall7.png').convert_alpha()
-        self.rect = self.wall.get_rect()
-        self.rect.centerx = centerx
-        self.rect.centery = centery
-
-    def update(self):
-        self.screen.blit(self.wall, self.rect)
-
-
-class Wall8(Sprite):
-    def __init__(self, screen, centerx, centery):
-        super().__init__()
-        self.screen = screen
-        self.screen_rect = screen.get_rect()
-        self.wall = pygame.image.load('images/wall8.png').convert_alpha()
-        self.rect = self.wall.get_rect()
-        self.rect.centerx = centerx
-        self.rect.centery = centery
+        self.rect.centerx = pos[0]
+        self.rect.centery = pos[1]
 
     def update(self):
         self.screen.blit(self.wall, self.rect)
 
 
 def map1(screen, walls):
-
     for row in [150, 400, 650]:
         for col in [275, 525, 775, 1025]:
-            new_wall = Wall1(screen, col, row)
+            new_wall = Wall(screen, (col, row), 'images/wall1.png')
             walls.add(new_wall)
 
 
 def map2(screen, walls):
-    new_wall = Wall2(screen, 280, 120)
-    walls.add(new_wall)
-    new_wall = Wall2(screen, 1020, 680)
-    walls.add(new_wall)
-    new_wall = Wall2(screen, 575, 450)
-    walls.add(new_wall)
-    new_wall = Wall3(screen, 429, 679)
-    walls.add(new_wall)
-    new_wall = Wall3(screen, 870, 120)
-    walls.add(new_wall)
-    new_wall = Wall4(screen, 137, 180)
-    walls.add(new_wall)
-    new_wall = Wall4(screen, 1162, 178)
-    walls.add(new_wall)
-    new_wall = Wall5(screen, 1162, 520)
-    walls.add(new_wall)
-    new_wall = Wall5(screen, 137, 520)
-    walls.add(new_wall)
-    new_wall = Wall5(screen, 877, 515)
-    walls.add(new_wall)
-    walls.add(new_wall)
-    new_wall = Wall6(screen, 282, 400)
-    walls.add(new_wall)
-    new_wall = Wall6(screen, 1008, 400)
-    walls.add(new_wall)
-    new_wall = Wall7(screen, 590, 242)
-    walls.add(new_wall)
-    walls.add(new_wall)
-    new_wall = Wall8(screen, 722, 558)
-    walls.add(new_wall)
+    pos = [
+        (280, 120), (1020, 680), (575, 450), (429, 679),
+        (870, 120), (137, 180), (1162, 178), (1162, 520),
+        (137, 520), (877, 515), (282, 400), (1008, 400),
+        (590, 242), (722, 558)
+    ]
 
+    picture = [
+        'images/wall2.png', 'images/wall2.png', 'images/wall2.png', 'images/wall3.png',
+        'images/wall3.png', 'images/wall4.png', 'images/wall4.png', 'images/wall5.png',
+        'images/wall5.png', 'images/wall5.png', 'images/wall6.png', 'images/wall6.png',
+        'images/wall7.png', 'images/wall8.png'
+    ]
+
+    for i in range(len(picture)):
+        walls.add(Wall(screen, pos[i], picture[i]))
+        
 
 # 设置敌方坦克出生地
 def create_enemies(screen, enemies, bullets_1, walls, enemies_speed,
-                   enemies_bullet_speed, enemies_firing_rate, tank_0, e_num, map_):
+                   enemies_bullet_speed, enemies_firing_rate, tank_0, enemy_num, map_):
     bpx = 60
     bpy = 60
     if map_ == 1:
-        if e_num % 3 == 0:
+        if enemy_num % 3 == 0:
             bpx = 400
-        if e_num % 3 == 1:
+        if enemy_num % 3 == 1:
             bpx = 650
-        if e_num % 3 == 2:
+        if enemy_num % 3 == 2:
             bpx = 900
+            
     if map_ == 2:
-        if e_num % 5 == 0:
+        if enemy_num % 5 == 0:
             bpx = 400
             bpy = 50
-        if e_num % 5 == 1:
+        if enemy_num % 5 == 1:
             bpx = 900
             bpy = 180
-        if e_num % 5 == 2:
+        if enemy_num % 5 == 2:
             bpx = 1240
             bpy = 150
-        if e_num % 5 == 3:
+        if enemy_num % 5 == 3:
             bpx = 450
             bpy = 330
-        if e_num % 5 == 4:
+        if enemy_num % 5 == 4:
             bpx = 925
             bpy = 620
-    dirs = [1, 2, 3, 4]
-    dir = random.choice(dirs)
-    new_enemy = Enemy(screen, bullets_1, dir, tank_0, walls, enemies_speed,
+            
+    direction = random.choice([1, 2, 3, 4])
+    new_enemy = Enemy(screen, bullets_1, direction, tank_0, walls, enemies_speed,
                       enemies_bullet_speed, enemies_firing_rate, tank_0, bpx, bpy)
 
     enemies.add(new_enemy)
