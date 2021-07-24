@@ -238,10 +238,10 @@ def settings_(screen, back2, data):
 
 
 def interface(screen):
-    # pygame.mixer.init()
-    # pygame.mixer.music.load('music/Star-Wars.mp3')
-    # pygame.mixer.music.play(-1, 0)
-    # pygame.mixer.music.set_volume(0.05)
+    pygame.mixer.init()
+    pygame.mixer.music.load('music/Star-Wars.mp3')
+    pygame.mixer.music.play(-1, 0)
+    pygame.mixer.music.set_volume(0.05)
 
     tank_wars_title = Picture('images/tank wars.png', 650, 220)
     play_word = Picture('images/play.png', 650, 360)
